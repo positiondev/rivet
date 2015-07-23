@@ -1,0 +1,36 @@
+name:                rivet-adaptor-postgresql
+version:             0.1.0.0
+synopsis:            Rivet migration library postgresql backend
+description:         Please see README.md
+homepage:            http://github.com/name/project
+license:             BSD3
+license-file:        LICENSE
+author:              Daniel Patterson
+maintainer:          dbp@dbpmail.net
+-- copyright:
+category:            Web
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Database.Rivet.Adaptor.PostgreSQL
+  build-depends:       base >= 4.7 && < 5
+                     , postgresql-simple
+                     , text
+                     , rivet-core >= 0.2
+  default-language:    Haskell2010
+
+-- test-suite new-template-test
+--   type:                exitcode-stdio-1.0
+--   hs-source-dirs:      test
+--   main-is:             Spec.hs
+--   build-depends:       base
+--                      , rivet-adaptor-postgresql
+--   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+--   default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/dbp/rivet
