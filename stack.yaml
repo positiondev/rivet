@@ -1,0 +1,8 @@
+resolver: lts-3.10
+
+packages:
+- rivet-adaptor-postgresql/
+- rivet-core/
+- rivet-autoimporter/
+
+extra-deps: []

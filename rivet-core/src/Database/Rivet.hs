@@ -32,7 +32,7 @@ runMigration dir ad n m = do sequence_ (map (runStep dir ad) (migSteps m))
                              markMigration ad n dir
 
 runStep :: Direction -> Adaptor m -> Syntax m -> IO ()
-runStep Up   (Adaptor h _ _ m) (App up _)   = h up
-runStep Down (Adaptor h _ _ m) (App _ down) = h down
-runStep Up   (Adaptor _ s _ m) (SQL up _)   = s up
-runStep Down (Adaptor _ s _ m) (SQL _ down) = s down
+runStep Up   (Adaptor h _ _ _) (App up _)   = h up
+runStep Down (Adaptor h _ _ _) (App _ down) = h down
+runStep Up   (Adaptor _ s _ _) (SQL up _)   = s up
+runStep Down (Adaptor _ s _ _) (SQL _ down) = s down
