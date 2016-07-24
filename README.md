@@ -12,8 +12,10 @@ can talk to production databases), if you need that.
 ## Usage
 
 All migrations will be Haskell source files in a `migrations`
-directory. You should create that, and then add a target to your cabal
-file.
+directory. They will be run in lexicographic order, which means you should
+name them accordingly. The convention I've used in `M2016..._description_of_change`, 
+where the beginning is a full timestamp. You should create the `migrations` directory,
+and then add a target to your cabal file.
 
 ```
 Executable migrate
@@ -23,6 +25,40 @@ Executable migrate
                  ... -- same as your application
   default-language: Haskell2010
 ```
+
+An example migration might be:
+
+```
+{-# LANGUAGE OverloadedStrings #-}
+module M20141211212630_add_type_to_gift_subscriptions where
+
+import           Control.Monad
+import           Database.Rivet.V0
+
+migrate :: Migration IO ()
+migrate = do addColumn "gift_subscriptions" (ColumnSpec "type" "text" Nothing (Just "not null"))
+             addColumn "gift_subscriptions" (ColumnSpec "country_code" "text" Nothing (Just "not null"))
+```
+
+Or
+
+```
+{-# LANGUAGE OverloadedStrings #-}
+module M20160521_add_to_addr_index where
+
+import           Control.Monad
+import           Database.Rivet.V0
+
+migrate :: Migration IO ()
+migrate = sql up down
+
+
+up = "CREATE INDEX CONCURRENTLY email_archive_to_addr_idx ON email_archive (to_addr);"
+
+down = "DROP INDEX email_archive_to_addr_idx;"
+```
+
+See the full (at this point very limited) API in `Database.Rivet.V0`.
 
 Then you should create `migrations/rivet.hs`. Currently, there is
 still some copying / pasting, in particular, to figure out how to
