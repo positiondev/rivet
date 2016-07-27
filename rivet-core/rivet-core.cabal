@@ -2,7 +2,7 @@ name:                rivet-core
 version:             0.2.0.0
 synopsis:            Database migration library; core functionality.
 description:         Please see README.md
-homepage:            http://github.com/dbp/rivet
+homepage:            http://github.com/positiondev/rivet
 license:             BSD3
 license-file:        LICENSE
 author:              Daniel Patterson
