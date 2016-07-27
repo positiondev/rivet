@@ -2,7 +2,7 @@ name:                rivet-adaptor-postgresql
 version:             0.1.0.0
 synopsis:            Rivet migration library postgresql backend
 description:         Please see README.md
-homepage:            http://github.com/name/project
+homepage:            http://github.com/positiondev/rivet
 license:             BSD3
 license-file:        LICENSE
 author:              Daniel Patterson
