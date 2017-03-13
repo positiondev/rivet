@@ -28,7 +28,7 @@ Executable migrate
 
 An example migration might be:
 
-```
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 module M20141211212630_add_type_to_gift_subscriptions where
 
@@ -42,7 +42,7 @@ migrate = do addColumn "gift_subscriptions" (ColumnSpec "type" "text" Nothing (J
 
 Or
 
-```
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 module M20160521_add_to_addr_index where
 
@@ -70,7 +70,7 @@ your application manages database connections. The preprocessor line
 (second in file) and the last two lines in the `main` function are
 required; everything else could vary.
 
-```
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -F -pgmF rivet-autoimporter #-}
 module Main where
